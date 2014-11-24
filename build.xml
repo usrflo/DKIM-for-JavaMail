@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="DKIMforJavaMail" default="runTests" basedir=".">
+
+	<!-- Directories -->
+	<property name="src.dir" value="src" />
+	<property name="test.dir" value="test" />
+	<property name="build.dir" value="build" />
+	<property name="temp.dir" value="temp" />
+	<property name="extlib.dir" value="lib" />
+
+	<!-- Filesets -->
+	<path id="dkimfjm.classpath">
+		<fileset dir="${extlib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<!-- Targets -->
+	<target name="buildJar">
+		<echo>-----------------------------------------------------------------</echo>
+		<echo>Build DKIMforJavaMail.jar</echo>
+		<echo>-----------------------------------------------------------------</echo>
+
+		<delete dir="${temp.dir}" />
+		<mkdir dir="${temp.dir}" />
+
+		<javac srcdir="${src.dir}" destdir="${temp.dir}" verbose="true" optimize="true" target="1.5">
+			<classpath refid="dkimfjm.classpath" />
+		</javac>
+
+		<jar destfile="DKIMforJavaMail.jar" basedir="${temp.dir}" includes="**/*.class" />
+		
+		<delete dir="${temp.dir}" />
+	</target>
+	
+	<target name="runTests">
+		<echo>-----------------------------------------------------------------</echo>
+		<echo>Run tests, be aware to set your settings in test.properties first</echo>
+		<echo>-----------------------------------------------------------------</echo>
+
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}" />
+
+		<javac srcdir="${src.dir}" destdir="${build.dir}" verbose="false" optimize="true" target="1.5">
+			<classpath refid="dkimfjm.classpath" />
+		</javac>
+		
+		<javac srcdir="${test.dir}" destdir="${build.dir}" verbose="false" optimize="true" target="1.5">
+			<classpath refid="dkimfjm.classpath" />
+		</javac>
+
+		<echo>-----------------------------------------------------------------</echo>
+		<echo>Sending 1 mail with SimpleExample</echo>
+
+		<java classname="de.agitos.dkim.SimpleExample">
+			<classpath refid="dkimfjm.classpath" />
+			<classpath path="${build.dir}" />
+		</java>
+
+		<echo>Sending several mails with MultipleMailExample</echo>		
+		
+		<java classname="de.agitos.dkim.MultipleMailExample">
+			<classpath refid="dkimfjm.classpath" />
+			<classpath path="${build.dir}" />
+		</java>
+		
+		<echo>Sending 1 mail with FullExample</echo>
+		
+		<java classname="de.agitos.dkim.FullExample">
+			<classpath refid="dkimfjm.classpath" />
+			<classpath path="${build.dir}" />
+		</java>
+
+		<echo>Sending 1 mail with MimeMailExample</echo>
+		
+		<java classname="de.agitos.dkim.MimeMailExample">
+			<classpath refid="dkimfjm.classpath" />
+			<classpath path="${build.dir}" />
+		</java>
+
+		<echo>-----------------------------------------------------------------</echo>
+		<echo>If something failed, check your settings in the test.properties file</echo>
+		<echo>-----------------------------------------------------------------</echo>
+
+	</target>
+</project>

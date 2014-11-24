@@ -1,0 +1,30 @@
+# your mail server
+mail.smtp.host=mail.myisp.com
+
+# set auth to true if SMTP-AUTH is needed
+mail.smtp.auth=true
+
+# your username for SMTP-AUTH
+mail.smtp.auth.user=myuser@mydomain.com
+
+# your password for SMTP-AUTH
+mail.smtp.auth.password=mypassword
+
+# the string to use in the From header of your test mails
+mail.smtp.from=myuser@mydomain.com
+
+# the address to which your test mails should be sent
+# mail.smtp.to=sa-test@sendmail.net --> get check results by this autoresponder address
+mail.smtp.to=myself@mydomain.com
+
+# a file that can be sent in the attachment in FullExample
+mail.smtp.attachment=lib/dsn.jar
+
+# the signing domain whose zone contains the public key record
+mail.smtp.dkim.signingdomain=mydomain.com
+
+# the selector in the DNS zone, e.g. default._domainkey ...
+mail.smtp.dkim.selector=default
+
+# your private key
+mail.smtp.dkim.privatekey=keys/default.private.der

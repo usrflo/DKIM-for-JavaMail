@@ -74,8 +74,14 @@ public class MultipleMailExample {
 			
 			
 			msg.setFrom(new InternetAddress(testProps.getProperty("mail.smtp.from")));
-			msg.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(testProps.getProperty("mail.smtp.to"), false));
+			if (testProps.getProperty("mail.smtp.to") != null) {
+				msg.setRecipients(Message.RecipientType.TO,
+						InternetAddress.parse(testProps.getProperty("mail.smtp.to"), false));
+			}
+			if (testProps.getProperty("mail.smtp.cc") != null) {
+				msg.setRecipients(Message.RecipientType.CC,
+						InternetAddress.parse(testProps.getProperty("mail.smtp.cc"), false));
+			}
 	
 			msg.setSubject("DKIM for JavaMail: MultipleExample Testmessage "+i);
 			msg.setText(TestUtil.bodyText);

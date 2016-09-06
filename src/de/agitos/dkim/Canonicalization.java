@@ -54,6 +54,9 @@ public class Canonicalization {
 			// Remove trailing empty lines ...
 			while ("\r\n\r\n".equals(body.substring(body.length()-4, body.length()))) {
 				body = body.substring(0, body.length()-2);
+				if (body.length() < 4) {
+				    break;
+				}
 			}
 
 			return body;
@@ -91,6 +94,9 @@ public class Canonicalization {
 			// Remove trailing empty lines ...
 			while ("\r\n\r\n".equals(body.substring(body.length()-4, body.length()))) {
 				body = body.substring(0, body.length()-2);
+				if (body.length() < 4) {
+				    break;
+				}
 			}
 
 			return body;

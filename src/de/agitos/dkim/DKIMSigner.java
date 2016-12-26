@@ -61,7 +61,6 @@ public class DKIMSigner {
 	private static ArrayList<String> minimumHeadersToSign = new ArrayList<String>();
 	static {
 		minimumHeadersToSign.add("From");
-		minimumHeadersToSign.add("To");
 		minimumHeadersToSign.add("Subject");
 	}
 	

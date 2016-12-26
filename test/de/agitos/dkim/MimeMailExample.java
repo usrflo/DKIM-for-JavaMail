@@ -46,7 +46,12 @@ public class MimeMailExample {
 		StringBuffer mimeMail = new StringBuffer();
 		mimeMail.append("Date: ").append(new MailDateFormat().format(new Date())).append("\r\n");
 		mimeMail.append("From: ").append(testProps.getProperty("mail.smtp.from")).append("\r\n");
-		mimeMail.append("To: ").append(testProps.getProperty("mail.smtp.to")).append("\r\n");
+		if (testProps.getProperty("mail.smtp.to") != null) {
+			mimeMail.append("To: ").append(testProps.getProperty("mail.smtp.to")).append("\r\n");
+		}
+		if (testProps.getProperty("mail.smtp.cc") != null) {
+			mimeMail.append("Cc: ").append(testProps.getProperty("mail.smtp.cc")).append("\r\n");
+		}
 		mimeMail.append("Subject: ").append("DKIM for JavaMail: MimeMailExample Testmessage").append("\r\n");
 		mimeMail.append("\r\n");
 		mimeMail.append(TestUtil.bodyText);

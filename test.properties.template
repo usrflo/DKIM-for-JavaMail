@@ -13,9 +13,13 @@ mail.smtp.auth.password=mypassword
 # the string to use in the From header of your test mails
 mail.smtp.from=myuser@mydomain.com
 
-# the address to which your test mails should be sent
+# the address to which your test mails should be sent. not required if you have a CC address
 # mail.smtp.to=sa-test@sendmail.net --> get check results by this autoresponder address
 mail.smtp.to=myself@mydomain.com
+
+# the address to which your test mails should be CC'd, if desired. not requred if you have a To addess
+# mail.smtp.cc=sa-test@sendmail.net --> get check results by this autoresponder address
+#mail.smtp.cc=myself@mydomain.com
 
 # a file that can be sent in the attachment in FullExample
 mail.smtp.attachment=lib/dsn.jar

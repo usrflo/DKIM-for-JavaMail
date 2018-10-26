@@ -25,7 +25,7 @@
 		<delete dir="${temp.dir}" />
 		<mkdir dir="${temp.dir}" />
 
-		<javac srcdir="${src.dir}" destdir="${temp.dir}" verbose="true" optimize="true" target="1.5">
+		<javac srcdir="${src.dir}" destdir="${temp.dir}" verbose="true" optimize="true" target="1.10">
 			<classpath refid="dkimfjm.classpath" />
 		</javac>
 
@@ -42,11 +42,11 @@
 		<delete dir="${build.dir}" />
 		<mkdir dir="${build.dir}" />
 
-		<javac srcdir="${src.dir}" destdir="${build.dir}" verbose="false" optimize="true" target="1.5">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" verbose="false" optimize="true" target="1.10">
 			<classpath refid="dkimfjm.classpath" />
 		</javac>
 		
-		<javac srcdir="${test.dir}" destdir="${build.dir}" verbose="false" optimize="true" target="1.5">
+		<javac srcdir="${test.dir}" destdir="${build.dir}" verbose="false" optimize="true" target="1.10">
 			<classpath refid="dkimfjm.classpath" />
 		</javac>
 

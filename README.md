@@ -1,6 +1,4 @@
-=================
-DKIM-for-JavaMail
-=================
+# DKIM-for-JavaMail
 
 DKIM for JavaMail is a small JAR that can be easily implemented in existing Java projects using JavaMail for sending DKIM signed emails.
 
@@ -8,9 +6,7 @@ This github repository replaces the original repository at http://dkim-javamail.
 See http://sourceforge.net/p/dkim-javamail/discussion/893011/ for old forum posts.
 
 
-===========================
-Setup DKIM for JavaMail API
-===========================
+## Setup DKIM for JavaMail API
 
 What is required to use DKIM for JavaMail
 ---
@@ -64,9 +60,7 @@ Implement DKIM for JavaMail into your code
 - see the example files in test/de/agitos/dkim/* : it's very simple to implement, enjoy!
 
 
-====
-TODO
-====
+## TODO
 
 - DKIM for JavaMail is in principal compatible with all libraries using JavaMail,
   an example for Apache Commons Email should be added to this project
@@ -81,46 +75,24 @@ TODO
   out of the DKIM basic functionality and therefore isn't mandatory
 
 
-===============
-RELEASE-HISTORY
-===============
+## RELEASE-HISTORY
 
 1.0, 2008-11-30
+
 1.1, 2009-04-13
    Bugfix line-encoding before body canonicalization on *nix systems
    Added partial line-folding of the DKIM-Signature header field
+
 1.2, 2009-05-10
    Bugfix in signing mime messages that are loaded by an InputStream,
    Added a MimeMessageTest for testing the signing of loaded mime messages.
+
 1.3, 2009-07-29
    Changed the insertion of the DKIM-Signature header to the top most position
    when sending mail. This is compatible with the Yahoo! DKIM verifier.
 
 
-==================
-Further DKIM Links
-==================
-
-http://www.dkim-reputation.org : DKIM Reputation Project
-   Reputation data based on DKIM identities (that is signingdomains and users 'below');
-   this project was built especially to setup good reputation for good users to reduce
-   the false-positive-problem. The DKIM Reputation Project collects identities of spammers
-   as well to prevent that spammers gain positive reputation.
-   In addition, this project helps ISPs to identify spamming user accounts by the
-   subscription to ARFs (abuse reports).
-   Furthermore you can subscribe to daily DKIM checks to assure that the DKIM signatures
-   you inject in your mails on your MTA are valid.
-
-http://dkim-connector.agitos.de : DKIM Connector
-   With the DKIM Connector you get an configuration tool to update DKIM configs (especially
-   public/private keys) on one or more mail servers and in your master DNS. This simplifies
-   the setup of DKIM for multiple domains (in virtual hosting environments) and makes it
-   possible to automate regular key rotations.
-   Considering the DKIM Reputation aspects it is reasonable to sign your mail as precise
-   as possible, that means: if you are isp.com you could sign mails from customers with
-   domains cust1.com and cust2.com with your signing domain isp.com. This is the simple
-   setup. In a more detailed setup you sign mails from cust1.com with signing domain cust1.com
-   and cust2.com with signing domain cust2.com
+## Further DKIM Links
 
 http://www.dkim.org/deploy/ : DKIM implementations
 	On this website you can find most MTA-DKIM implementations and complementary products

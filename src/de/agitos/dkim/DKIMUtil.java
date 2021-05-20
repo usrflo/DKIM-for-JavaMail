@@ -27,6 +27,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -36,7 +37,6 @@ import javax.naming.NamingException;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 
-import sun.misc.BASE64Encoder;
 
 import com.sun.mail.util.QPEncoderStream;
 
@@ -90,8 +90,8 @@ public class DKIMUtil {
 	}
 
 	protected static String base64Encode(byte[] b) {
-		BASE64Encoder base64Enc = new BASE64Encoder();
-		String encoded = base64Enc.encode(b);
+		Base64.Encoder base64Enc = Base64.getEncoder();
+		String encoded = new String(base64Enc.encode(b));
 		// remove unnecessary linefeeds after 76 characters
 		encoded = encoded.replace("\n", ""); // Linux+Win
 		return encoded.replace("\r", ""); // Win --> FSTODO: select Encoder without line termination 
